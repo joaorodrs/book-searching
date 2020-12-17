@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -8,12 +9,12 @@ export const Container = styled.div`
   /* background: #333; */
 `
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled(motion.div)`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 8px 8px 30px rgba(0,0,0,0.2);
+  box-shadow: 8px 8px 30px rgba(0,0,0,0.15);
   width: 90vw;
   border-radius: 10px;
 
