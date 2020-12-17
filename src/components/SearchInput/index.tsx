@@ -1,11 +1,20 @@
 import React from 'react'
+import { FiSearch } from 'react-icons/fi'
 
-import { Container } from './styles'
+import {
+  Container,
+  InputWrapper
+} from './styles'
 
 const SearchInput: React.FC = () => {
   return (
     <Container>
-      <h1>SearchInput</h1>
+      <InputWrapper>
+        <input placeholder="Search for books..." />
+        <button>
+          <FiSearch color="#F7B002" size={30} style={{ marginRight: 10 }} />
+        </button>
+      </InputWrapper>
     </Container>
   )
 }

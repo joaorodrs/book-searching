@@ -6,4 +6,10 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
+
+  button, input {
+    background: none;
+    border: 0;
+    outline: 0;
+  }
 `
