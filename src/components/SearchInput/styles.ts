@@ -3,10 +3,38 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 3vh 0;
+  height: 100%;
   /* background: #333; */
+
+  > section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    > p {
+      font-size: 20px;
+      color: gray;
+      margin-bottom: 20px;
+    }
+  }
+`
+
+export const SbookLogo = styled.div`
+  margin-bottom: 50px;
+
+  > p {
+    font-weight: 700;
+    background-image: linear-gradient(90deg, rgba(247,176,2,1), 10%, rgba(247,176,2,1), rgba(247,176,2,0.2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 50px;
+    user-select: none;
+  }
 `
 
 export const InputWrapper = styled(motion.div)`
@@ -23,6 +51,10 @@ export const InputWrapper = styled(motion.div)`
     padding-left: 20px;
     width: 100%;
     font-size: 18px;
+
+    ::placeholder {
+      color: #c8c8c8;
+    }
   }
 
   > button {
