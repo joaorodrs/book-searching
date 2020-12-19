@@ -14,11 +14,17 @@ const SearchInput: React.FC = () => {
 
   return (
     <Container>
-      <SbookLogo>
+      <SbookLogo style={{
+        marginBottom: searchText !== '' ? 25 : 50,
+      }}>
         <p>sbook</p>
       </SbookLogo>
 
-      <section>
+      <section style={{
+        opacity: searchText !== '' ? 0 : 1,
+        position: searchText !== '' ? 'absolute' : 'static',
+        bottom: searchText !== '' ? 0 : 60,
+      }}>
         <p>Search for books by title or authors!</p>
 
         <motion.div

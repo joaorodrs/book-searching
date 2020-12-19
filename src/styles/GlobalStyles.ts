@@ -7,6 +7,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Quicksand';
     font-weight: 500;
+
+    ::selection {
+      background: rgba(247,176,2,.5)
+    }
   }
 
   button, input {

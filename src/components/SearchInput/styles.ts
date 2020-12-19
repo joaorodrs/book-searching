@@ -15,6 +15,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    transition: 0.5s;
 
     > p {
       font-size: 20px;
@@ -26,6 +27,7 @@ export const Container = styled.div`
 
 export const SbookLogo = styled.div`
   margin-bottom: 50px;
+  transition: 0.5s;
 
   > p {
     font-weight: 700;
