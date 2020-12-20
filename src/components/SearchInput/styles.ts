@@ -6,8 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding: 3vh 0;
-  height: 100%;
+  max-height: 100vh;
   /* background: #333; */
 
   > section {
@@ -62,5 +61,18 @@ export const InputWrapper = styled(motion.div)`
   > button {
     border-left: 1px solid #f1f1f1;
     padding-left: 10px;
+    cursor: pointer;
+    
+    :hover {
+      opacity: 0.6
+    }
+  }
+`
+
+export const SearchResultsContainer = styled.div`
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 `
