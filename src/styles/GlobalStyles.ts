@@ -18,4 +18,8 @@ export default createGlobalStyle`
     border: 0;
     outline: 0;
   }
+
+  :root {
+    --background-color: #333
+  }
 `
