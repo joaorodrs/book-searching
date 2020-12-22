@@ -2,7 +2,11 @@ import React from 'react'
 import { FiArrowDown, FiSearch } from 'react-icons/fi'
 import axios from 'axios'
 
+import Book from '../../components/Book'
+
 import { motion } from 'framer-motion'
+
+import Loader from 'react-loader-spinner'
 
 import {
   Container,
@@ -11,31 +15,11 @@ import {
   SearchResultsContainer
 } from './styles'
 
-interface Book {
-  searchInfo: {
-    textSnippet: string
-  },
-  volumeInfo: {
-    authors: string[],
-    canonicalVolumeLink: string,
-    categories: string[],
-    description: string,
-    imageLinks: {
-      smallThumbnail: string,
-      thumbnail: string
-    },
-    infoLink: string,
-    pageCount: number,
-    previewLink: string,
-    publishedDate: string,
-    publisher: string,
-    title: string,
-  },
-}
+import { BookType } from '../../@types/Books'
 
 interface SearchResults {
   kind: string,
-  items: Book[]
+  items: BookType[]
 }
 
 interface Response {
@@ -46,29 +30,29 @@ const Home: React.FC = () => {
   const [searchText, setSearchText] = React.useState('')
   const [searchResultsAreShowing, setSearchResultsAreShowing] = React.useState(false)
 
-  const [books, setBooks] = React.useState<Book[]>([])
+  const [books, setBooks] = React.useState<BookType[]>([])
+
+  const [loading, setLoading] = React.useState(false)
 
   async function searchBooks() {
+    setLoading(true)
+    setSearchResultsAreShowing(false)
+
     const response: Response = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchText}`)
 
     setBooks(response.data.items)
-    console.log(response.data.items)
 
     setSearchText('')
     setSearchResultsAreShowing(true)
+    setLoading(false)
   }
 
   return (
     <Container>
+      {loading && <Loader type="Watch" color="rgba(247,176,2,1)" height={50} width={50} />}
+      
       <SearchResultsContainer>
-        {books.map(book => {
-          return (
-            <div>
-              <h2>{book.volumeInfo.title}</h2>
-              <p>{book.volumeInfo.description}</p>
-            </div>
-          )
-        })}
+        {books.map(book => <Book book={book} />)}
       </SearchResultsContainer>
 
       <SbookLogo style={{
@@ -116,7 +100,7 @@ const Home: React.FC = () => {
           onChange={changeEvent => setSearchText(changeEvent.target.value)}
         />
         <motion.button
-          onTap={searchBooks}
+          onClick={searchBooks}
         >
           <motion.div
             initial={{ scale: 0 }}
