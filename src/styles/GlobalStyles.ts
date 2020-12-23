@@ -7,6 +7,7 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Quicksand';
     font-weight: 500;
+    background: var(--background-color);
 
     ::selection {
       background: rgba(247,176,2,.5)
@@ -20,6 +21,7 @@ export default createGlobalStyle`
   }
 
   :root {
-    --background-color: #333
+    --background-color: white;
+    --primary-color: rgb(247,176,2)
   }
 `

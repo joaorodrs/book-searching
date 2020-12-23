@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  height: 100vh;
+  height: 97vh;
   background: var(--background-color);
 
   > section {
@@ -21,6 +21,14 @@ export const Container = styled.div`
       color: gray;
       margin-bottom: 20px;
     }
+  }
+
+  .loader-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 `
 
@@ -71,6 +79,8 @@ export const InputWrapper = styled(motion.div)`
 
 export const SearchResultsContainer = styled.div`
   overflow-y: scroll;
+  width: 100vw;
+  height: 100%;
 
   ::-webkit-scrollbar {
     display: none;

@@ -33,8 +33,11 @@ const Home: React.FC = () => {
   const [books, setBooks] = React.useState<BookType[]>([])
 
   const [loading, setLoading] = React.useState(false)
+  const [error, setError] = React.useState(false)
 
   async function searchBooks() {
+    if (searchText === '') return setError(true)
+
     setLoading(true)
     setSearchResultsAreShowing(false)
 
@@ -49,7 +52,11 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      {loading && <Loader type="Watch" color="rgba(247,176,2,1)" height={50} width={50} />}
+      {loading && (
+        <div className="loader-container">
+          <Loader type="Watch" color="rgba(247,176,2,1)" height={50} width={50} />
+        </div>
+      )}
       
       <SearchResultsContainer>
         {books.map(book => <Book book={book} />)}
@@ -106,7 +113,11 @@ const Home: React.FC = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
           >
-            <FiSearch color={searchText !== '' ? "#F7B002" : "lightgray"} size={30} style={{ marginRight: 10 }} />
+            <FiSearch
+              color={searchText !== '' ? "#F7B002" : "lightgray"}
+              size={30}
+              style={{ marginRight: 10 }}
+            />
           </motion.div>
         </motion.button>
       </InputWrapper>
